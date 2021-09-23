@@ -4,8 +4,8 @@ import { View,Text } from 'react-native';
 const RepositoryItem = ({item}) => {
 
     return (
-        <View>
-            <Text>Full Name : {item.fullName}</Text>
+        <View style={{margin: '0'}}>
+            <Text style={{ color: 'green', fontSize:24, fontWeight:'700'}}>Full Name : {item.fullName}</Text>
             <Text>Description : {item.description}</Text>
             <Text>Language : {item.language}</Text>
             <Text>Stars : {item.forksCount}</Text>
