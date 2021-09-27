@@ -1,13 +1,18 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
+import  Text  from './Text';
+import theme from '../theme';
 
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#ffffff',
+        padding: 10,
+    },
+    row: {
         display: 'flex',
         flexDirection: 'row',
-        padding: 10,
-        flexGrow: 1
+        flexGrow: 1,
+        justifyContent:'space-around'
     },
     imageContainer: {
         flexGrow: 0,
@@ -22,32 +27,67 @@ const styles = StyleSheet.create({
     contentContainer: {
         alignItems: 'flex-start',
         flexShrink: 1,
-        flexGrow: 0,
+        flexGrow: 1,
         paddingRight: 10,
     },
     pill: {
-        backgroundColor: '#0366d6',
+        backgroundColor: theme.colors.primary,
         color: 'white',
         padding: 7,
         borderRadius: 6
+
     }
 });
+// converts number to string representation with K and M.
+// toFixed(d) returns a string that has exactly 'd' digits
+// after the decimal place, rounding if necessary.
+const numFormatter = (num) => {
 
+    if(num > 999 && num < 1000000) {
+        return (num/1000).toFixed(1) + 'K'; // convert to K for number from > 1000 < 1 million
+    }else if(num > 1000000){
+        return (num/1000000).toFixed(1) + 'M'; // convert to M for number from > 1 million 
+    }else if(num < 900){
+        return num; // if value < 1000, nothing to do
+    }
+};
+// numFormatter(300);
 const RepositoryItem = ({ item }) => {
 
     return (
         <View style={styles.container}>
-            <View style={styles.imageContainer}>
-                <Image
-                    style={styles.image}
-                    source={{
-                        uri: item.ownerAvatarUrl
-                    }} />
+            <View style={styles.row}>
+                <View style={styles.imageContainer}>
+                    <Image
+                        style={styles.image}
+                        source={{
+                            uri: item.ownerAvatarUrl
+                        }} />
+                </View>
+                <View style={styles.contentContainer}>
+                    
+                    <Text fontWeight='bold'>{item.fullName}</Text>
+                    <Text fontSize='subheading'>{item.description}</Text>
+                    <Text style={styles.pill}>{item.language}</Text>
+                </View>
             </View>
-            <View style={styles.contentContainer}>
-                <Text style={{ fontSize: 15, fontWeight: 'bold' }}>{item.fullName}</Text>
-                <Text>{item.description}</Text>
-                <Text style={styles.pill}>{item.language}</Text>
+            <View style={styles.row}>
+                <View style={styles.contentContainer}>
+                    <Text fontWeight='bold'>{numFormatter(item.stargazersCount)}</Text>
+                    <Text>Stars</Text>
+                </View>
+                <View style={styles.contentContainer}>
+                    <Text fontWeight='bold'>{numFormatter(item.forksCount)}</Text>
+                    <Text>Forks</Text>
+                </View>
+                <View style={styles.contentContainer}>
+                    <Text fontWeight='bold'>{numFormatter(item.reviewCount)}</Text>
+                    <Text>Reviews</Text>
+                </View>
+                <View style={styles.contentContainer}>
+                    <Text fontWeight='bold'>{numFormatter(item.ratingAverage)}</Text>
+                    <Text>Rating</Text>
+                </View>
             </View>
             {/* <Text>Language : {item.language}</Text>
             <Text>Stars : {item.forksCount}</Text>
