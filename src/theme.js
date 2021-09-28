@@ -18,6 +18,12 @@ const theme = {
     normal: '400',
     bold: '700',
   },
+  row: {
+      display: 'flex',
+      flexDirection: 'row',
+      flexGrow: 1,
+      justifyContent:'space-around',
+  },
 };
 
 export default theme;
