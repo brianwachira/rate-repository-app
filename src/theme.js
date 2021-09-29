@@ -28,6 +28,18 @@ const theme = {
       backgroundColor: '#ffffff',
       padding: 10,
   },
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    borderColor: '#bfbfbf',
+    padding: 10,
+    borderRadius: 6
+    },
+  button: {
+      backgroundColor: '#0165d4'
+
+  }
 };
 
 export default theme;

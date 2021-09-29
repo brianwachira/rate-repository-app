@@ -1,16 +1,19 @@
 import React from "react";
-import { Pressable, View } from "react-native";
+import { Button ,View } from "react-native";
 import FormikTextInput from "./FormikTextInput";
-import Text from './Text';
+import theme from '../theme';
 
 const BodyMassIndexForm = ({ onSubmit }) => {
     return(
         <View>
-            <FormikTextInput name="mass" placeholder="Weight (kg)"/>
-            <FormikTextInput name="height" placeholder="Height (m)"/>
-            <Pressable onPress={onSubmit}>
-                <Text>Calculate</Text>
-            </Pressable>
+            <FormikTextInput name="mass" placeholder="Weight (kg)" style={theme.input}/>
+            <FormikTextInput name="height" placeholder="Height (m)" style={theme.input}/>
+            <Button
+                style={theme.button}
+                onPress={onSubmit}
+                title="Calculate"
+                accessibilityLabel="Manage your account"
+            />
         </View>
     );
 };

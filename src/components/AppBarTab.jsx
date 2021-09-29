@@ -26,6 +26,9 @@ const AppBarTab = () => {
         <Link to="/">
           <Text color="light" style={styles.text}>Repositories</Text>
         </Link>
+        <Link to="/bmi">
+          <Text color="light" style={styles.text}>BMI</Text>
+        </Link>
         <Link to="/signin">
           <Text color="light" style={styles.text}>Sign In</Text>
         </Link>
