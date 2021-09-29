@@ -24,6 +24,10 @@ const theme = {
       flexGrow: 1,
       justifyContent:'space-around',
   },
+  container: {
+      backgroundColor: '#ffffff',
+      padding: 10,
+  },
 };
 
 export default theme;

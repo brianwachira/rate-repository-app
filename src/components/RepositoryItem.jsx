@@ -47,7 +47,7 @@ const RepositoryItem = ({ item }) => {
 
     return (
         <>
-            <Container style={styles.container}>
+            <Container style={theme.container}>
                 <Row>
                     <Column style={styles.imageContainer}>
                         <Image
