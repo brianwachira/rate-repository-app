@@ -6,8 +6,8 @@ import theme from '../theme';
 const SignInForm = ({ onSubmit }) => {
     return (
         <View style={theme.container}>
-            <FormikTextInput name="Username" placeholder="Username" style={theme.input}/>
-            <FormikTextInput name="Password" placeholder="Password" secureTextEntry={true} style={theme.input}/>
+            <FormikTextInput name="username" placeholder="Username" style={theme.input}/>
+            <FormikTextInput name="password" placeholder="Password" secureTextEntry={true} style={theme.input}/>
             <Button
                 style={theme.button}
                 onPress={onSubmit}

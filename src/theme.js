@@ -5,7 +5,8 @@ const theme = {
     primary: '#0366d6',
     dark: '#25292c',
     light:'#fbfefe',
-    AppBarColorPrimary: '#24292e'
+    AppBarColorPrimary: '#24292e',
+    danger:'#d73a4a'
   },
   fontSizes: {
     body: 14,
@@ -13,6 +14,8 @@ const theme = {
   },
   fonts: {
     main: 'System',
+    android: 'Roboto',
+    ios: 'Arial'
   },
   fontWeights: {
     normal: '400',

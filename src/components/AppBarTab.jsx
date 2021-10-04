@@ -4,6 +4,7 @@ import Constants from 'expo-constants';
 import Text from './Text';
 import theme from '../theme';
 import { Link } from 'react-router-native';
+
 const styles = StyleSheet.create({
   container: {
     paddingTop: Constants.statusBarHeight,

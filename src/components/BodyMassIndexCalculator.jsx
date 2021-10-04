@@ -9,9 +9,7 @@ const initialValues = {
 };
 
 const validationSchema = yup.object().shape({
-    mass:yup
-     .number()
-     .min(1, 'Weight must be greater or equal to 1')
+    mass:yup.number().min(1, 'Weight must be greater or equal to 1')
      .required('Weight is required'),
     height: yup
      .number()

@@ -4,33 +4,30 @@ import SignInForm from './SignInForm';
 import * as yup from 'yup';
 
 
-const initialValues ={
-    username: '',
-    password: '',
+const initialValues = {
+  username: '',
+  password: '',
 };
 
 const validationSchema = yup.object().shape({
-  username:yup
-   .string()
-   .required('Username is required'),
-  password:yup
-    .string()
-    .required('Password is required')
+  username: yup.string().min(2, 'Too Short!').required('Username is required'),
+  password: yup.string().min(2, 'Too Short!').required('Password is required')
 });
+
 const SignIn = () => {
 
-    const onSubmit = values => {
-        //const username = values.username;
-        //const password = values.password;
+  const onSubmit = values => {
+    //const username = values.username;
+    //const password = values.password;
 
-        console.log(values);
-    };
+    console.log(values);
+  };
   return (
-    <Formik 
-      initialValues={initialValues} 
+    <Formik
+      initialValues={initialValues}
       onSubmit={onSubmit}
       validationSchema={validationSchema}>
-        {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit}/>}
+      {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
     </Formik>
   );
 };

@@ -19,16 +19,16 @@ const Main = () => {
         <View style={styles.container}>
             <AppBarTab>Rate Repository Application</AppBarTab>
             <Switch>
-                <Route path="/" exact>
-                    <RepositoryList />
+                <Route path="/signin">
+                    <SignIn/>
                 </Route>
                 <Route path="/bmi">
                     <BodyMassIndexCalculator/>
                 </Route>
-                <Route path="/signin">
-                    <SignIn/>
+                <Route path="/" exact>
+                    <RepositoryList />
                 </Route>
-                <Redirect to="/"/>
+                <Redirect to="/" />
             </Switch>
         </View>
     );
