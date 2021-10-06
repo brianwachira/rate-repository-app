@@ -2,6 +2,8 @@ import React from 'react';
 import { Formik } from 'formik';
 import SignInForm from './SignInForm';
 import * as yup from 'yup';
+import useSignIn from '../hooks/useSignIn';
+import AuthStorage from '../utils/authStorage';
 
 
 const initialValues = {
@@ -15,12 +17,23 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
+  const [signIn, result] = useSignIn();
 
-  const onSubmit = values => {
-    //const username = values.username;
-    //const password = values.password;
+  const authStorage = new AuthStorage();
+  const onSubmit = async (values) => {
+    const { username, password } = values;
 
-    console.log(values);
+    try {
+      await signIn({ username, password });
+      if (result?.data) {
+        //console.log(result.data.authorize.accessToken);
+        authStorage.setAccessToken(result.data.authorize.accessToken);
+        //AuthStorage.setAccessToken();
+
+      }
+    } catch (e) {
+      console.log(e);
+    }
   };
   return (
     <Formik
