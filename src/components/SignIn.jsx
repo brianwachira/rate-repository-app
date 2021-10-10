@@ -3,7 +3,8 @@ import { Formik } from 'formik';
 import SignInForm from './SignInForm';
 import * as yup from 'yup';
 import useSignIn from '../hooks/useSignIn';
-import AuthStorage from '../utils/authStorage';
+import { useHistory } from 'react-router';
+import { Alert } from 'react-native';
 
 
 const initialValues = {
@@ -17,22 +18,37 @@ const validationSchema = yup.object().shape({
 });
 
 const SignIn = () => {
-  const [signIn, result] = useSignIn();
-
-  const authStorage = new AuthStorage();
+  const [signIn] = useSignIn();
+  const history = useHistory();
   const onSubmit = async (values) => {
     const { username, password } = values;
 
     try {
       await signIn({ username, password });
-      if (result?.data) {
-        //console.log(result.data.authorize.accessToken);
-        authStorage.setAccessToken(result.data.authorize.accessToken);
-        //AuthStorage.setAccessToken();
-
-      }
+      Alert.alert(
+        'Success',
+        'Log in successfull',
+        [
+          {
+            text: "Ok",
+            style: "cancel"
+          },
+        ],
+        { cancelable: true }
+      );
+      history.push("/");
     } catch (e) {
-      console.log(e);
+      Alert.alert(
+        'Failed',
+        e.message,
+        [
+          {
+            text: "Ok",
+            style: "cancel"
+          },
+        ],
+        { cancelable: true }
+      );
     }
   };
   return (

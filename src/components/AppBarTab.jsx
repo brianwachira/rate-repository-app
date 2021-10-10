@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, StyleSheet, ScrollView } from 'react-native';
+import { View, StyleSheet, ScrollView, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 import Text from './Text';
 import theme from '../theme';
 import { Link } from 'react-router-native';
+import useAuthorization from '../hooks/useAuthorization';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,21 +22,36 @@ const styles = StyleSheet.create({
 });
 
 const AppBarTab = () => {
-  return <View style={styles.container}>
-    <View >
-      <ScrollView horizontal style={styles.row}>
-        <Link to="/">
-          <Text color="light" style={styles.text}>Repositories</Text>
-        </Link>
-        <Link to="/bmi">
-          <Text color="light" style={styles.text}>BMI</Text>
-        </Link>
-        <Link to="/signin">
-          <Text color="light" style={styles.text}>Sign In</Text>
-        </Link>
-      </ScrollView>
-    </View>
-  </View>;
+
+  const { user, unauthorize } = useAuthorization();
+  return (
+    <>
+      <View style={styles.container}>
+        <View >
+          <ScrollView horizontal style={styles.row}>
+            <Link to="/">
+              <Text color="light" style={styles.text}>Repositories</Text>
+            </Link>
+            {user === null ?
+              <Link to="/signin">
+                <Text
+                  color="light"
+                  style={styles.text}
+                >Sign In</Text>
+              </Link>
+              :
+              <Pressable
+                onPress={() => unauthorize()}>
+              <Text
+                color="light"
+                style={styles.text}
+              >Sign out</Text>
+              </Pressable>
+            }
+          </ScrollView>
+        </View>
+      </View>
+    </>);
 };
 
 export default AppBarTab;
