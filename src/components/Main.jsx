@@ -4,7 +4,6 @@ import { Route, Switch, Redirect } from 'react-router-native';
 import RepositoryList from './RepositoryList';
 import AppBarTab from './AppBarTab';
 import SignIn from './SignIn';
-import BodyMassIndexCalculator from './BodyMassIndexCalculator';
 
 const styles = StyleSheet.create({
     container: {
@@ -22,9 +21,9 @@ const Main = () => {
                 <Route path="/signin">
                     <SignIn/>
                 </Route>
-                <Route path="/bmi">
+                {/* <Route path="/bmi">
                     <BodyMassIndexCalculator/>
-                </Route>
+                </Route> */}
                 <Route path="/" exact>
                     <RepositoryList />
                 </Route>
