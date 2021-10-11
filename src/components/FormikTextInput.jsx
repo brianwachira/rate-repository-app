@@ -29,6 +29,7 @@ const FormikTextInput = ({ name, ...props }) => {
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
+        testID={props.testID}
         {...props}
       />
       {/* Show the error message if the value of showError variable is true */}
