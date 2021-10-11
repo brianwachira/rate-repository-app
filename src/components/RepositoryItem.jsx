@@ -57,26 +57,26 @@ const RepositoryItem = ({ item }) => {
                             }} />
                     </Column>
                     <Column style={styles.contentContainer}>  
-                        <Text fontWeight='bold' style={{marginBottom: 5}}>{item.fullName}</Text>
-                        <Text fontSize='subheading'>{item.description}</Text>
-                        <Text style={styles.pill}>{item.language}</Text>
+                        <Text fontWeight='bold' style={{marginBottom: 5}} testID={'fullName'}>{item.fullName}</Text>
+                        <Text fontSize='subheading' testID={'description'}>{item.description}</Text>
+                        <Text style={styles.pill} testID={'language'}>{item.language}</Text>
                     </Column>
                 </Row>
                 <Row>
                     <Column style={styles.statsContainer}>
-                        <Text fontWeight='bold'>{numFormatter(item.stargazersCount)}</Text>
+                        <Text fontWeight='bold' testID={'stargazersCount'}>{numFormatter(item.stargazersCount)}</Text>
                         <Text>Stars</Text>
                     </Column>
                     <Column style={styles.statsContainer}>
-                        <Text fontWeight='bold'>{numFormatter(item.forksCount)}</Text>
+                        <Text fontWeight='bold' testID={'forksCount'}>{numFormatter(item.forksCount)}</Text>
                         <Text>Forks</Text>
                     </Column>
                     <Column style={styles.statsContainer}>
-                        <Text fontWeight='bold'>{numFormatter(item.reviewCount)}</Text>
+                        <Text fontWeight='bold' testID={'reviewCount'}>{numFormatter(item.reviewCount)}</Text>
                         <Text>Reviews</Text>
                     </Column>
                     <Column style={styles.statsContainer}>
-                        <Text fontWeight='bold'>{numFormatter(item.ratingAverage)}</Text>
+                        <Text fontWeight='bold' testID={'ratingAverage'}>{numFormatter(item.ratingAverage)}</Text>
                         <Text>Rating</Text>
                     </Column>
                 </Row>
