@@ -4,11 +4,15 @@ import { Route, Switch, Redirect } from 'react-router-native';
 import RepositoryList from './RepositoryList';
 import AppBarTab from './AppBarTab';
 import SignIn from './SignIn';
+import Repository from './Repository';
+import Review from './Review';
+import SignUp from './SignUp';
+import UserReviews from './UserReviews';
 
 const styles = StyleSheet.create({
     container: {
-        flexGrow:1,
-        flexShrink:1,
+        flexGrow: 1,
+        flexShrink: 1,
         backgroundColor: '#e1e4e8',
     }
 });
@@ -19,13 +23,25 @@ const Main = () => {
             <AppBarTab>Rate Repository Application</AppBarTab>
             <Switch>
                 <Route path="/signin">
-                    <SignIn/>
+                    <SignIn />
+                </Route>
+                <Route path="/signup">
+                    <SignUp/>
                 </Route>
                 {/* <Route path="/bmi">
                     <BodyMassIndexCalculator/>
                 </Route> */}
+                <Route path="/review">
+                    <Review/>
+                </Route>
+                <Route path="/myreviews">
+                    <UserReviews/>
+                </Route>
                 <Route path="/" exact>
                     <RepositoryList />
+                </Route>
+                <Route path="/repository/:slug">
+                    <Repository />
                 </Route>
                 <Redirect to="/" />
             </Switch>

@@ -38,11 +38,17 @@ const theme = {
     borderColor: '#bfbfbf',
     padding: 10,
     borderRadius: 6
-    },
+  },
   button: {
-      backgroundColor: '#0165d4'
+      color: '#0366d6',
+      borderRadius: 12,
+      flex: 1,
+      width: 100
 
-  }
+  },
+  separator: {
+    height: 10,
+},
 };
 
 export default theme;

@@ -1,14 +1,25 @@
 import { ApolloClient, InMemoryCache, createHttpLink } from "@apollo/client";
 import { setContext } from '@apollo/client/link/context';
+import { relayStylePagination } from "@apollo/client/utilities";
 import Constants from 'expo-constants';
 
 const { apolloUri } = Constants.manifest.extra;
 
 const httpLink = createHttpLink({
   // Replace the IP address part with your own IP address!
+  //'http://192.168.0.25:5000/graphql'||
   uri: apolloUri,
 });
 
+const cache = new InMemoryCache({
+  typePolicies: {
+    Query: {
+      fields: {
+        repositories: relayStylePagination(),
+      },
+    },
+  },
+}); 
 const createApolloClient = (authStorage) => {
   const authLink = setContext(async (_, { headers }) => {
     try {
@@ -28,7 +39,7 @@ const createApolloClient = (authStorage) => {
   });
   return new ApolloClient({
     link: authLink.concat(httpLink),
-    cache: new InMemoryCache(),
+    cache,
   });
 };
 

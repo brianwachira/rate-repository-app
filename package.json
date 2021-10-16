@@ -17,21 +17,28 @@
     "transformIgnorePatterns": [
       "node_modules/(?!(jest-)?react-native|react-clone-referenced-element|@react-native-community|expo(nent)?|@expo(nent)?/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|sentry-expo|native-base|@sentry/.*|react-router-native)"
     ],
-    "setupFilesAfterEnv": ["<rootDir>/setupTests.js"]
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupTests.js"
+    ]
   },
   "dependencies": {
     "@apollo/client": "^3.4.15",
     "@react-native-async-storage/async-storage": "~1.15.0",
+    "@react-native-picker/picker": "^2.1.0",
+    "date-fns": "^2.25.0",
     "dotenv": "^10.0.0",
     "expo": "^42.0.4",
     "expo-status-bar": "~1.0.3",
+    "expo-web-browser": "~9.2.0",
     "formik": "^2.2.9",
     "graphql": "^15.6.0",
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-40.0.1.tar.gz",
+    "react-native-paper": "^4.9.2",
     "react-native-web": "^0.17.5",
     "react-router-native": "^5.2.1",
+    "use-debounce": "^7.0.0",
     "yup": "^0.32.9"
   },
   "devDependencies": {

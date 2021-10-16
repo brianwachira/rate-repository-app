@@ -33,20 +33,36 @@ const AppBarTab = () => {
               <Text color="light" style={styles.text}>Repositories</Text>
             </Link>
             {user === null ?
-              <Link to="/signin">
-                <Text
-                  color="light"
-                  style={styles.text}
-                >Sign In</Text>
-              </Link>
+              <>
+                <Link to="/signin">
+                  <Text
+                    color="light"
+                    style={styles.text}
+                  >Sign In</Text>
+                </Link>
+                <Link to="/signup">
+                  <Text
+                    color="light"
+                    style={styles.text}
+                  >Sign Up</Text>
+                </Link>
+              </>
               :
-              <Pressable
-                onPress={() => unauthorize()}>
-              <Text
-                color="light"
-                style={styles.text}
-              >Sign out</Text>
-              </Pressable>
+              <>
+                <Link to="/review">
+                  <Text color="light" style={styles.text}>Create a review</Text>
+                </Link>
+                <Link to="/myreviews">
+                  <Text color="light" style={styles.text}>My reviews</Text>
+                </Link>
+                <Pressable
+                  onPress={() => unauthorize()}>
+                  <Text
+                    color="light"
+                    style={styles.text}
+                  >Sign out</Text>
+                </Pressable>
+              </>
             }
           </ScrollView>
         </View>
