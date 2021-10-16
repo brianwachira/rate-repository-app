@@ -1,11 +1,12 @@
 import React from 'react';
-import { Image, StyleSheet } from 'react-native';
-import  Text  from './Text';
+import { Image, StyleSheet, Button, Linking } from 'react-native';
+import Text from './Text';
 import theme from '../theme';
 import { numFormatter } from '../utils';
 import Container from './Container';
 import Row from './Row';
 import Column from './Column';
+import * as WebBrowser from 'expo-web-browser';
 
 const styles = StyleSheet.create({
     container: {
@@ -26,7 +27,7 @@ const styles = StyleSheet.create({
         flexShrink: 1,
         flexGrow: 1,
         paddingRight: 10,
-        marginBottom:10
+        marginBottom: 10
     },
     statsContainer: {
         alignItems: 'center',
@@ -38,12 +39,20 @@ const styles = StyleSheet.create({
         color: 'white',
         padding: 7,
         borderRadius: 6,
-        marginTop:6
+        marginTop: 6
 
     }
 });
 
-const RepositoryItem = ({ item }) => {
+const RepositoryItem = ({ item, ...props }) => {
+    
+    const handleOpenWithBrowser = () => {
+        WebBrowser.openBrowserAsync(item.url);
+    };
+
+    const handleOpenWithLinking = () => {
+        Linking.openURL(item.url);
+    };
 
     return (
         <>
@@ -56,8 +65,8 @@ const RepositoryItem = ({ item }) => {
                                 uri: item.ownerAvatarUrl
                             }} />
                     </Column>
-                    <Column style={styles.contentContainer}>  
-                        <Text fontWeight='bold' style={{marginBottom: 5}} testID={'fullName'}>{item.fullName}</Text>
+                    <Column style={styles.contentContainer}>
+                        <Text fontWeight='bold' style={{ marginBottom: 5 }} testID={'fullName'}>{item.fullName}</Text>
                         <Text fontSize='subheading' testID={'description'}>{item.description}</Text>
                         <Text style={styles.pill} testID={'language'}>{item.language}</Text>
                     </Column>
@@ -80,6 +89,17 @@ const RepositoryItem = ({ item }) => {
                         <Text>Rating</Text>
                     </Column>
                 </Row>
+                {props.openOnGit &&
+                    <Row>
+                        <Column style={styles.statsContainer}>
+                            <Button
+                                style={theme.button}
+                                color="#0366d6"
+                                title="Open in GitHub"
+                                onPress={() => handleOpenWithLinking()} />
+                        </Column>
+                    </Row>
+                }
             </Container>
         </>
     );

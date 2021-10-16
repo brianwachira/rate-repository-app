@@ -27,7 +27,7 @@ const SignIn = () => {
       await signIn({ username, password });
       Alert.alert(
         'Success',
-        'Log in successfull',
+        'Log in successful',
         [
           {
             text: "Ok",

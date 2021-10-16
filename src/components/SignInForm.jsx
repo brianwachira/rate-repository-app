@@ -10,6 +10,7 @@ const SignInForm = ({ onSubmit }) => {
             <FormikTextInput name="password" placeholder="Password" secureTextEntry={true} style={theme.input} testID={'passwordField'}/>
             <Button
                 style={theme.button}
+                color="#0366d6"
                 onPress={onSubmit}
                 title="Sign In"
                 accessibilityLabel="Manage your account"
