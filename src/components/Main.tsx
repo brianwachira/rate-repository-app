@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 const Main = () => {
     return (
         <View style={styles.container}>
-            <AppBarTab>Rate Repository Application</AppBarTab>
+            <AppBarTab/>
             <Switch>
                 <Route path="/signin">
                     <SignIn />

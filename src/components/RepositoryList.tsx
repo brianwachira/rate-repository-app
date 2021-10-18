@@ -15,11 +15,23 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-export const RepositoryListContainer = ({ repositories, testID, selected, setSelected, refetch, onChangeSearch, searchQuery, onEndReach }) => {
+interface repoContainerProps  {
+  repositories : any,
+  testID?: string,
+  selected?:string,
+  setSelected?:any,
+  refetch?: any,
+  onChangeSearch?: any,
+  searchQuery?: any
+  onEndReach?: any
+}
+
+export const RepositoryListContainer = (props : repoContainerProps) => {
   // Get the nodes from the edges array
-  const repositoryNodes = repositories ? repositories.edges.map(edge => edge.node) : [];
+  const { repositories, testID, selected, setSelected, refetch, onChangeSearch, searchQuery, onEndReach } = props;
+  const repositoryNodes = repositories ? repositories.edges.map((edge: { node: any; }) => edge.node) : [];
   const history = useHistory();
-  const handlePush = id => {
+  const handlePush = (id : string)  => {
     history.push(`/repository/${id}`);
   };
 
@@ -65,7 +77,7 @@ const RepositoryList = () => {
   const [searchQuery, setSearchQuery] = useState('');
 
 
-  const onChangeSearch = query => {
+  const onChangeSearch = (query : string) => {
     setSearchQuery(query);
     refetch({ searchKeyword: query });
   };

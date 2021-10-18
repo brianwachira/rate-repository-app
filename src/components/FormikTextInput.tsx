@@ -1,10 +1,11 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleProp, StyleSheet, TextInputProps } from 'react-native';
 import { useField } from 'formik';
 
 import TextInput from './TextInput';
 import Text from './Text';
 import theme from '../theme';
+
 
 const styles = StyleSheet.create({
   errorText: {
@@ -16,20 +17,24 @@ const styles = StyleSheet.create({
   }
 });
 
-const FormikTextInput = ({ name, ...props }) => {
-  const [field, meta, helpers] = useField(name);
+interface formikTextInputProps extends TextInputProps {
+  name: string
+  testID?: string
+  style: any
+}
+const FormikTextInput = (props: formikTextInputProps) => {
+  const [field, meta, helpers] = useField(props.name);
 
   // Check if the field is touched and the error message is present
-  const showError = meta.touched && meta.error;
+  const showError: any = meta.touched && meta.error;
 
   return (
     <>
       <TextInput
-        onChangeText={(value) => helpers.setValue(value)}
+        onChangeText={(value: any) => helpers.setValue(value)}
         onBlur={() => helpers.setTouched(true)}
         value={field.value}
         error={showError}
-        testID={props.testID}
         {...props}
       />
       {/* Show the error message if the value of showError variable is true */}

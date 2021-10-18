@@ -7,7 +7,7 @@ import { StyleSheet, View, Button, Alert } from "react-native";
 import Text from "./Text";
 import { format } from "date-fns";
 import { useHistory } from "react-router";
-const ReviewItem = ({ item, showRepoName, handleDelete }) => {
+const ReviewItem = ({ item, showRepoName, handleDelete } : { item: any, showRepoName?: boolean, handleDelete?: any}) => {
 
     const styles = StyleSheet.create({
         ratingContainer: {
@@ -38,7 +38,7 @@ const ReviewItem = ({ item, showRepoName, handleDelete }) => {
     const handleOpen = () => {
         history.push(`/repository/${item.repository.id}`);
     };
-    const handleDeleteReview = (id) => {
+    const handleDeleteReview = (id: string) => {
         Alert.alert(
             "Delete Review",
             "Do you wish to delete this review?",
@@ -49,7 +49,7 @@ const ReviewItem = ({ item, showRepoName, handleDelete }) => {
                 },
                 {
                     text: "DELETE",
-                    onPress:()=> handleDelete(id)
+                    onPress: () => handleDelete(id)
                 }
             ]
         );
@@ -72,20 +72,18 @@ const ReviewItem = ({ item, showRepoName, handleDelete }) => {
 
                 {showRepoName &&
                     <Row style={{ paddingTop: 10 }}>
-                        <Column style={{flexGrow: 1, paddingRight:10}}>
+                        <Column style={{ flexGrow: 1, paddingRight: 10 }}>
                             <Button
-                                style={theme.button}
                                 color="#0366d6"
                                 title="View repository"
                                 onPress={() => handleOpen()}
                             />
                         </Column>
-                        <Column style={{flexGrow: 1}}>
+                        <Column style={{ flexGrow: 1 }}>
                             <Button
-                                style={theme.button}
                                 color="#d6394c"
                                 title="Delete Review"
-                                onPress={()=> handleDeleteReview(item.id)}
+                                onPress={() => handleDeleteReview(item.id)}
                             />
                         </Column>
                     </Row>

@@ -24,11 +24,11 @@ const SignUp = () => {
     const [signIn] = useSignIn();
     const history = useHistory();
 
-    const onSubmit = async (values) => {
+    const onSubmit = async (values: { username: string, password: string }) => {
         const { username, password } = values;
 
         try {
-            await signUp({ username, password });
+            await signUp({ variables: {username, password}});
             Alert.alert(
                 'Success',
                 'Sign up successful....signing you in',
@@ -42,7 +42,7 @@ const SignUp = () => {
             );
             await signIn({ username, password });
             history.push("/");
-        } catch (e) {
+        } catch (e : any) {
             Alert.alert(
                 'Failed',
                 e.message,

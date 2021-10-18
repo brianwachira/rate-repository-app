@@ -17,8 +17,12 @@ const styles = StyleSheet.create({
     fontWeight: '700',
   },
 });
-
-const FancyText = ({ isBlue, isBig, children }) => {
+type Props = {
+    isBlue?: boolean,
+    isBig?: boolean,
+    children: React.ReactNode
+}
+const FancyText = ({ isBlue, isBig, children } : Props) => {
     const textStyles = [
         styles.text,
         isBlue && styles.blueText,

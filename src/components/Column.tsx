@@ -1,7 +1,11 @@
 import React from 'react';
 import { View as NativeView} from 'react-native';
 
-const Column = ({style, ...props}) => {
+interface columnProps {
+    style?: any;
+    children: React.ReactNode
+}
+const Column = ({style, ...props} : columnProps) => {
     const columnStyle =[
         style
     ];

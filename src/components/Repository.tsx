@@ -14,7 +14,8 @@ const Repository = () => {
         },
     });
     const ItemSeparator = () => <View style={styles.separator} />;
-    let { slug } = useParams();
+
+    let { slug }: { slug: string } = useParams();
     const { loading, error, data } = useQuery(GET_REPOSITORY, {
         fetchPolicy: 'cache-and-network',
         variables: { id: slug }
@@ -27,7 +28,7 @@ const Repository = () => {
             <>
                 <Text>{JSON.stringify(error, null, 2)}</Text>
             </>);
-    const reviewNodes = data?.repository.reviews ? data.repository.reviews.edges.map(edge => edge.node) : [];
+    const reviewNodes = data?.repository.reviews ? data.repository.reviews.edges.map((edge: { node: any; }) => edge.node) : [];
 
     return (
         <>

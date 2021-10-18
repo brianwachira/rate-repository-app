@@ -3,7 +3,7 @@ import { View, Button } from "react-native";
 import theme from "../theme";
 import FormikTextInput from "./FormikTextInput";
 
-const SignUpForm = ({ onSubmit }) => {
+const SignUpForm = ({ onSubmit }: { onSubmit: any }) => {
     return (
         <View style={theme.container}>
             <FormikTextInput
@@ -21,7 +21,6 @@ const SignUpForm = ({ onSubmit }) => {
                 secureTextEntry={true}
                 style={theme.input} />
             <Button
-                style={theme.button}
                 color="#0366d6"
                 onPress={onSubmit}
                 title="Sign Up"

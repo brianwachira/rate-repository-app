@@ -25,8 +25,8 @@ const UserReviews = () => {
             </>);
 
     const ItemSeparator = () => <View style={theme.separator} />;
-    const reviewNodes = user.reviews ? user.reviews.edges.map(edge => edge.node) : [];
-    const handleDelete = async (id) => {
+    const reviewNodes = user.reviews ? user.reviews.edges.map((edge: { node: any; }) => edge.node) : [];
+    const handleDelete = async (id : string) => {
         const hasBeenDeleted =  await deleteReview({ variables: { id: id } });
         refetch();
         return hasBeenDeleted;

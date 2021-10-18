@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
 const SignIn = () => {
   const [signIn] = useSignIn();
   const history = useHistory();
-  const onSubmit = async (values) => {
+  const onSubmit = async (values : { username : string, password: string}) => {
     const { username, password } = values;
 
     try {
@@ -37,7 +37,7 @@ const SignIn = () => {
         { cancelable: true }
       );
       history.push("/");
-    } catch (e) {
+    } catch (e : any) {
       Alert.alert(
         'Failed',
         e.message,

@@ -1,20 +1,31 @@
 import React from 'react';
-import { Platform, Text as NativeText, StyleSheet } from 'react-native';
+import { Platform, Text as NativeText, TextStyle, StyleProp, StyleSheet } from 'react-native';
 
 import theme from '../theme';
 
-const styles = StyleSheet.create({
+interface Styles {
+  colorTextSecondary: boolean;
+  colorPrimary: boolean;
+  colorDark: boolean;
+  colorLight: boolean;
+  fontIOS: any;
+  fontSizeSubheading: boolean;
+  fontWeightBold: boolean;
+  text: StyleProp<TextStyle>
+  fontAndroid: StyleProp<FontFace>
+}
+const styles = StyleSheet.create<any | Styles>({
   text: {
     color: theme.colors.textPrimary,
     fontSize: theme.fontSizes.body,
     fontFamily: theme.fonts.main,
     fontWeight: theme.fontWeights.normal,
   },
-  fontAndroid : {
-    fontFamily : theme.fonts.android
+  fontAndroid: {
+    fontFamily: theme.fonts.android
   },
-  fontIOS : {
-    fontFamily : theme.fonts.ios
+  fontIOS: {
+    fontFamily: theme.fonts.ios
   },
   colorTextSecondary: {
     color: theme.colors.textSecondary,
@@ -26,7 +37,7 @@ const styles = StyleSheet.create({
   colorDark: {
     color: theme.colors.dark,
   },
-  colorLight:{
+  colorLight: {
     color: theme.colors.light
   },
   fontSizeSubheading: {
@@ -37,8 +48,16 @@ const styles = StyleSheet.create({
   },
 });
 
-const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
-    const textStyle = [
+interface IProps {
+  color?: string;
+  fontSize?: string;
+  fontWeight?: string;
+  style?: any;
+  children: React.ReactNode;
+  testID?: string
+}
+const Text = ({ color, fontSize, fontWeight, style, ...props }: IProps) => {
+  const textStyle = [
     styles.text,
     color === 'textSecondary' && styles.colorTextSecondary,
     color === 'primary' && styles.colorPrimary,
@@ -48,8 +67,8 @@ const Text = ({ color, fontSize, fontWeight, style, ...props }) => {
     fontSize === 'subheading' && styles.fontSizeSubheading,
     fontWeight === 'bold' && styles.fontWeightBold,
     style,
-    ];
-    return <NativeText style={textStyle} {...props}/>;
+  ];
+  return <NativeText style={textStyle} {...props} />;
 };
 
 export default Text;

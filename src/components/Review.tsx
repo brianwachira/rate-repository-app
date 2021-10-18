@@ -25,7 +25,7 @@ const Review = () => {
     const [createReview] = useMutation(CREATE_REVIEW);
     const history = useHistory();
 
-    const onSubmit = async (values) => {
+    const onSubmit = async (values : any) => {
         const { owner, name, rating, review } = values;
         const newRating = parseInt(rating);
         const reviewResult = await createReview({ variables: { repository: name, owner: owner, rating: newRating, review: review } });
@@ -43,7 +43,7 @@ const Review = () => {
                 { cancelable: true }
             );
             history.push(`repository/${reviewResult.data?.createReview.repositoryId}`);
-        } catch (e) {
+        } catch (e : any) {
             Alert.alert(
                 'Failed',
                 e.message,

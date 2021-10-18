@@ -19,7 +19,11 @@ const validationSchema = yup.object().shape({
 
 const BodyMassIndexCalculator = () => {
 
-    const onSubmit = values => {
+    type valueProps = {
+        mass: string,
+        height: string
+    }
+    const onSubmit = (values: valueProps) => {
 
         const mass = parseFloat(values.mass);
         const height = parseFloat(values.height);

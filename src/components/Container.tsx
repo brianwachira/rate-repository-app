@@ -1,7 +1,11 @@
 import React from 'react';
 import { View as NativeView} from 'react-native';
 
-const Container = ({style, ...props}) => {
+interface containerProps {
+    style?: any;
+    children: React.ReactNode
+}
+const Container = ({style, ...props} : containerProps) => {
     const viewStyle =[
         style
     ];

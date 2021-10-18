@@ -44,8 +44,8 @@ const styles = StyleSheet.create({
     }
 });
 
-const RepositoryItem = ({ item, ...props }) => {
-    
+const RepositoryItem = ({ item, openOnGit }: { item: any, openOnGit?: boolean }) => {
+
     const handleOpenWithBrowser = () => {
         WebBrowser.openBrowserAsync(item.url);
     };
@@ -89,11 +89,10 @@ const RepositoryItem = ({ item, ...props }) => {
                         <Text>Rating</Text>
                     </Column>
                 </Row>
-                {props.openOnGit &&
+                {openOnGit &&
                     <Row>
                         <Column style={styles.statsContainer}>
                             <Button
-                                style={theme.button}
                                 color="#0366d6"
                                 title="Open in GitHub"
                                 onPress={() => handleOpenWithLinking()} />

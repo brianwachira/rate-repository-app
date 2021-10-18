@@ -3,7 +3,7 @@ import { Button, View } from "react-native";
 import theme from "../theme";
 import FormikTextInput from "./FormikTextInput";
 
-const ReviewForm = ({ onSubmit }) => {
+const ReviewForm = ({ onSubmit } : {onSubmit :any}) => {
     return (
         <View style={theme.container}>
             <FormikTextInput name={"owner"} placeholder={"Repository owner name"} style={theme.input}/>
@@ -15,7 +15,6 @@ const ReviewForm = ({ onSubmit }) => {
                 keyboardType={'numeric'}/>
             <FormikTextInput name={"review"} placeholder={"Review"} style={theme.input} multiline={true} numberOfLines={3}/>
             <Button
-                style={theme.button}
                 color="#0366d6"
                 onPress={onSubmit}
                 title="Create a review"/>

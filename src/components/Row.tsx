@@ -1,7 +1,15 @@
 import React from 'react';
 import { View as NativeView} from 'react-native';
 import theme from '../theme';
-const Row = ({style, ...props}) => {
+
+type Props = {
+    chidlren: React.ReactNode
+}
+interface rowProps  {
+    style?: any;
+    children?: React.ReactNode
+}
+const Row = ({style, ...props} : rowProps) => {
     const rowStyle =[
         theme.row,
         style
