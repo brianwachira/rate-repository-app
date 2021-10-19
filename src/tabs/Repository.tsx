@@ -3,9 +3,9 @@ import React from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
 import { useParams } from 'react-router-native';
 import { GET_REPOSITORY } from '../graphql/queries';
-import RepositoryItem from "./RepositoryItem";
-import ReviewItem from './ReviewItem';
-import Text from './Text';
+import RepositoryItem from "../components/RepositoryItem";
+import ReviewItem from '../components/ReviewItem';
+import Text from '../components/Text';
 
 const Repository = () => {
     const styles = StyleSheet.create({

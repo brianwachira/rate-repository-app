@@ -4,8 +4,8 @@ import { FlatList, View } from "react-native";
 import { DELETE_REVIEW } from "../graphql/mutations";
 import useAuthorization from "../hooks/useAuthorization";
 import theme from "../theme";
-import ReviewItem from "./ReviewItem";
-import Text from './Text';
+import ReviewItem from "../components/ReviewItem";
+import Text from '../components/Text';
 const UserReviews = () => {
 
     const { loading, error, user, refetch } = useAuthorization({ includeReviews: true });
@@ -26,8 +26,8 @@ const UserReviews = () => {
 
     const ItemSeparator = () => <View style={theme.separator} />;
     const reviewNodes = user.reviews ? user.reviews.edges.map((edge: { node: any; }) => edge.node) : [];
-    const handleDelete = async (id : string) => {
-        const hasBeenDeleted =  await deleteReview({ variables: { id: id } });
+    const handleDelete = async (id: string) => {
+        const hasBeenDeleted = await deleteReview({ variables: { id: id } });
         refetch();
         return hasBeenDeleted;
     };

@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import { Text, View } from 'react-native';
 import { render } from '@testing-library/react-native';
 
-const Greeting = ({ name }) => {
+const Greeting = ({ name }: { name: any }) => {
     return (
         <View>
-            {/* This node is tagged with the testID prop */}
-            <Text testID="greetingText">Hello {name}!</Text>
+            {/* This node is tagged with the testID prop */ }
+            <Text testID = "greetingText"> Hello { name }!</Text>
         </View>
     );
 };

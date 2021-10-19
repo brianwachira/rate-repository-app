@@ -4,9 +4,9 @@ const theme = {
     textSecondary: '#586069',
     primary: '#0366d6',
     dark: '#25292c',
-    light:'#fbfefe',
+    light: '#fbfefe',
     AppBarColorPrimary: '#24292e',
-    danger:'#d73a4a'
+    danger: '#d73a4a'
   },
   fontSizes: {
     body: 14,
@@ -22,14 +22,14 @@ const theme = {
     bold: '700',
   },
   row: {
-      display: 'flex',
-      flexDirection: 'row',
-      flexGrow: 1,
-      justifyContent:'space-around',
+    display: 'flex',
+    flexDirection: 'row',
+    flexGrow: 1,
+    justifyContent: 'space-around',
   },
   container: {
-      backgroundColor: '#ffffff',
-      padding: 10,
+    backgroundColor: '#ffffff',
+    padding: 10,
   },
   input: {
     height: 40,
@@ -40,15 +40,15 @@ const theme = {
     borderRadius: 6
   },
   button: {
-      color: '#0366d6',
-      borderRadius: 12,
-      flex: 1,
-      width: 100
+    color: '#0366d6',
+    borderRadius: 12,
+    flex: 1,
+    width: 100
 
   },
   separator: {
     height: 10,
-},
+  },
 };
 
 export default theme;

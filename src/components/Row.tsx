@@ -2,9 +2,6 @@ import React from 'react';
 import { View as NativeView} from 'react-native';
 import theme from '../theme';
 
-type Props = {
-    chidlren: React.ReactNode
-}
 interface rowProps  {
     style?: any;
     children?: React.ReactNode

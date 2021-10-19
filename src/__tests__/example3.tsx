@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Text, TextInput, Pressable, View } from 'react-native';
 import { render, fireEvent } from '@testing-library/react-native';
 
-const Form = ({ onSubmit }) => {
+const Form = ({ onSubmit } : { onSubmit : any}) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 

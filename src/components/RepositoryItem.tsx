@@ -2,7 +2,7 @@ import React from 'react';
 import { Image, StyleSheet, Button, Linking } from 'react-native';
 import Text from './Text';
 import theme from '../theme';
-import { numFormatter } from '../utils';
+import { numFormatter } from '../utils/customFunction';
 import Container from './Container';
 import Row from './Row';
 import Column from './Column';

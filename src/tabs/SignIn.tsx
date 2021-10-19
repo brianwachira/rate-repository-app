@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import SignInForm from './SignInForm';
+import SignInForm from '../components/SignInForm';
 import * as yup from 'yup';
 import useSignIn from '../hooks/useSignIn';
 import { useHistory } from 'react-router';
@@ -20,11 +20,11 @@ const validationSchema = yup.object().shape({
 const SignIn = () => {
   const [signIn] = useSignIn();
   const history = useHistory();
-  const onSubmit = async (values : { username : string, password: string}) => {
+  const onSubmit = async (values: { username: string, password: string }) => {
     const { username, password } = values;
 
     try {
-      await signIn({ username, password });
+      const result = await signIn({ username, password });
       Alert.alert(
         'Success',
         'Log in successful',
@@ -37,7 +37,7 @@ const SignIn = () => {
         { cancelable: true }
       );
       history.push("/");
-    } catch (e : any) {
+    } catch (e: any) {
       Alert.alert(
         'Failed',
         e.message,

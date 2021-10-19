@@ -1,5 +1,5 @@
 import React from 'react';
-import Main from './src/components/Main';
+import Main from './src/tabs/Main';
 import { NativeRouter } from 'react-router-native';
 import { ApolloProvider } from '@apollo/client';
 import createApolloClient from './src/utils/apolloClient';

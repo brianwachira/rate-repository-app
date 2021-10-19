@@ -1,12 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import { render } from "@testing-library/react-native";
 import { RepositoryListContainer } from "../../components/RepositoryList";
-import { numFormatter } from '../../utils';
+import { numFormatter } from '../../utils/customFunction';
 
 describe('RepositoryList', () => {
     describe('RepositoryListContainer', () => {
         it('renders repository information correctly', () => {
-            const repositories = {
+            const repositories : any = {
                 totalCount: 8,
                 pageInfo: {
                     hasNextPage: true,
@@ -50,14 +50,16 @@ describe('RepositoryList', () => {
             };
 
             // Add your test code here
-            const { getAllByTestId } = render(<RepositoryListContainer repositories={repositories}/>);
+            const { getAllByTestId } = render(
+                <RepositoryListContainer repositories={ repositories } />
+            );
             //debug();
             expect(getAllByTestId('fullName')[1]).toHaveTextContent('async-library/react-async');
             expect(getAllByTestId('description')[1]).toHaveTextContent('Flexible promise-based React data loader');
             expect(getAllByTestId('language')[1]).toHaveTextContent('JavaScript');
-            expect(getAllByTestId('forksCount')[1]).toHaveTextContent(69);
-            expect(getAllByTestId('reviewCount')[1]).toHaveTextContent(3);
-            expect(getAllByTestId('ratingAverage')[1]).toHaveTextContent(numFormatter(72));
+            expect(getAllByTestId('forksCount')[1]).toHaveTextContent('69');
+            expect(getAllByTestId('reviewCount')[1]).toHaveTextContent('3');
+            expect(getAllByTestId('ratingAverage')[1]).toHaveTextContent(`${numFormatter(72)}`);
         });
     });
 });

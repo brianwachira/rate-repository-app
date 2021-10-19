@@ -3,7 +3,7 @@ import { Formik } from 'formik';
 
 import * as yup from 'yup';
 import { useHistory } from 'react-router';
-import ReviewForm from './ReviewForm';
+import ReviewForm from '../components/ReviewForm';
 import { useMutation } from '@apollo/client';
 import { CREATE_REVIEW } from '../graphql/mutations';
 import { Alert } from 'react-native';

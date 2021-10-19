@@ -1,5 +1,6 @@
 import { Picker } from '@react-native-picker/picker';
-import React, { useState } from 'react';
+import * as React from "react";
+import { useState } from 'react';
 import { FlatList, View, StyleSheet, TouchableOpacity } from 'react-native';
 import { Searchbar } from 'react-native-paper';
 import { useHistory } from 'react-router';
@@ -15,23 +16,23 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-interface repoContainerProps  {
-  repositories : any,
+interface repoContainerProps {
+  repositories: any,
   testID?: string,
-  selected?:string,
-  setSelected?:any,
+  selected?: string,
+  setSelected?: any,
   refetch?: any,
   onChangeSearch?: any,
   searchQuery?: any
   onEndReach?: any
 }
 
-export const RepositoryListContainer = (props : repoContainerProps) => {
+export const RepositoryListContainer = (props: repoContainerProps) => {
   // Get the nodes from the edges array
   const { repositories, testID, selected, setSelected, refetch, onChangeSearch, searchQuery, onEndReach } = props;
   const repositoryNodes = repositories ? repositories.edges.map((edge: { node: any; }) => edge.node) : [];
   const history = useHistory();
-  const handlePush = (id : string)  => {
+  const handlePush = (id: string) => {
     history.push(`/repository/${id}`);
   };
 
@@ -72,12 +73,12 @@ export const RepositoryListContainer = (props : repoContainerProps) => {
 const RepositoryList = () => {
   const [selectedOrder, setSelectedOrder] = useState('RATING_AVERAGE');
   const { repositories, refetch, fetchMore } = useRepositories({
-    first:8,
+    first: 8,
   });
   const [searchQuery, setSearchQuery] = useState('');
 
 
-  const onChangeSearch = (query : string) => {
+  const onChangeSearch = (query: string) => {
     setSearchQuery(query);
     refetch({ searchKeyword: query });
   };

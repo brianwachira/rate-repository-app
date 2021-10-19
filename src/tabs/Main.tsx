@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { Route, Switch, Redirect } from 'react-router-native';
-import RepositoryList from './RepositoryList';
-import AppBarTab from './AppBarTab';
+import RepositoryList from '../components/RepositoryList';
+import AppBarTab from '../components/AppBarTab';
 import SignIn from './SignIn';
 import Repository from './Repository';
 import Review from './Review';

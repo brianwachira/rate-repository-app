@@ -1,7 +1,7 @@
 import React from "react";
 import { Formik } from "formik";
-import { getBodyMassIndex } from "../utils";
-import BodyMassIndexForm from "./BodyMassIndexForm";
+import { getBodyMassIndex } from "../utils/customFunction";
+import BodyMassIndexForm from "../components/BodyMassIndexForm";
 import * as yup from 'yup';
 const initialValues = {
   mass: '',

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import SignUpForm from './SignUpForm';
+import SignUpForm from '../components/SignUpForm';
 import useSignUp from '../hooks/useSignUp';
 import useSignIn from '../hooks/useSignIn';
 import { useHistory } from 'react-router';
