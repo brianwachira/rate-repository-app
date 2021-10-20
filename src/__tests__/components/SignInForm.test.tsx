@@ -11,28 +11,28 @@ describe('SignIn', () => {
             const onSubmit = jest.fn();
             const { getByTestId } = render(
                 <Formik
-                    onSubmit={ onSubmit }
-                    initialValues = {{
-                username: '',
-                password: '',
-            }}>
-        {({ handleSubmit }) => <SignInForm onSubmit={ handleSubmit } />}
+                    onSubmit={onSubmit}
+                    initialValues={{
+                        username: '',
+                        password: '',
+                    }}>
+                    {({ handleSubmit }) => <SignInForm onSubmit={handleSubmit} />}
                 </Formik>
-    );
+            );
 
-    fireEvent.changeText(getByTestId('usernameField'), 'username');
-    fireEvent.changeText(getByTestId('passwordField'), 'password');
-    fireEvent.press(getByTestId('btnSignin'));
-    await waitFor(() => {
+            fireEvent.changeText(getByTestId('usernameField'), 'username');
+            fireEvent.changeText(getByTestId('passwordField'), 'password');
+            fireEvent.press(getByTestId('btnSignin'));
+            await waitFor(() => {
 
-        expect(onSubmit).toHaveBeenCalledTimes(1);
-        // expect the onSubmit function to have been called once and with a correct first argument
-        expect(onSubmit.mock.calls[0][0]).toEqual({
-            username: 'username',
-            password: 'password',
+                expect(onSubmit).toHaveBeenCalledTimes(1);
+                // expect the onSubmit function to have been called once and with a correct first argument
+                expect(onSubmit.mock.calls[0][0]).toEqual({
+                    username: 'username',
+                    password: 'password',
+                });
+            });
         });
-    });
-});
     });
 });
 
